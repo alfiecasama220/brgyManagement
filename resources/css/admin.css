@@ -1,0 +1,88 @@
+body {
+    background: linear-gradient(45deg, #1d2b64, #f8cdda);
+    color: #343a40;
+  }
+  
+  .card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    width: 100%;
+  }
+  
+  .form-control {
+    border-radius: 20px;
+  }
+  
+  .input-group-text {
+    border-radius: 0 20px 20px 0;
+    background: #343a40;
+    color: white;
+    border: none;
+  }
+  
+  .btn-primary {
+    background: #343a40;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  .btn-primary:hover {
+    background: #495057;
+  }
+  
+  .card-title {
+    color: #343a40;
+  }
+
+  /* DASHBOARRD */
+  
+  .sidebar {
+    background-color: #41a387;
+  }
+  
+  .nav-link {
+    color: white;
+  }
+  
+  .nav-link.active {
+    background-color: #f03e3e;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .card-body {
+    text-align: left;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+  }
+  
+  .card-text {
+    font-size: 2rem;
+  }
+
+
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #343a40; /* Dark background */
+    color: #fff; /* Light text */
+    padding-top: 20px;
+}
+.main-content {
+    margin-left: 250px; /* Same width as sidebar */
+    padding: 20px;
+}
+.card {
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Subtle shadow */
+}

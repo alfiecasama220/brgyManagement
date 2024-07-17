@@ -1,0 +1,375 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+body {
+    font-family: Arial, sans-serif;
+    
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #343a40; /* Dark background */
+    color: #fff; /* Light text */
+    padding-top: 20px;
+}
+.main-content {
+    margin-left: 250px; /* Same width as sidebar */
+    padding: 20px;
+}
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease;
+}
+.card:hover {
+    box-shadow: 0 0 30px rgba(0,0,0,0.15);
+}
+
+.card-link {
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+}
+
+.card-link .card {
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover effects */
+}
+
+.card-link .card:hover {
+    transform: scale(1.02); /* Slightly scale up on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+.card-body {
+    padding: 20px;
+}
+.card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+.card-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+.card-icon {
+    font-size: 2.5rem;
+    color: #007bff;
+}
+
+.profile-pic {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.custom-file-input ~ .custom-file-label::after {
+    content: "Browse";
+}
+.upload-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.upload-button i {
+    margin-right: 5px;
+}
+.upload-button:hover {
+    background-color: #0056b3;
+}
+
+/* USERS */
+
+.table-responsive {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table thead th {
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+.table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.modal-content {
+    border-radius: 15px;
+    padding: 20px;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    padding: 20px 40px;
+}
+
+.form-control {
+    border-radius: 25px;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Side Popup Styles */
+.side-popup {
+    position: fixed;
+    top: 0;
+    right: -350px; /* Start off-screen */
+    width: 350px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 1050;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+}
+
+.side-popup.show {
+    right: 0;
+}
+
+.side-popup-content {
+    padding: 20px;
+}
+
+.side-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e9ecef;
+    padding: 10px 20px;
+}
+
+.side-popup-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.side-popup-close {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #6c757d;
+    transition: color 0.3s ease;
+}
+
+.side-popup-close:hover {
+    color: #495057;
+}
+
+/* POPUP */
+
+.popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 9999; /* Ensure it's above other content */
+}
+
+/* DROP DOWN */
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    max-width: 900px;
+    width: 100%;
+    height: auto
+    ;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.icon-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-display {
+    font-size: 1.5rem;
+    color: #007bff;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.new-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.new-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.new-popup {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    max-width: 750px;
+    width: 90%;
+    text-align: center;
+    overflow: hidden;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.new-popup.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.new-popup-header {
+    background-color: #343a40;
+    color: #fff;
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+}
+
+.new-popup-title {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.new-icon-selection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+}
+
+.new-icon-option {
+    max-width: 700px;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.new-icon-option > p {
+    font-size: 12px;
+}
+
+.new-icon-option:hover {
+    background-color: #f1f1f1;
+}
+
+.new-icon {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+
+.new-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.new-close-btn:hover {
+    color: #f8f9fa;
+}
