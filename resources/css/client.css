@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+header {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img.navbar-logo {
+    max-width: 40px;
+    margin-right: 10px;
+}
+
+.nav-link {
+    color: #343a40;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+.jumbotron {
+    background-image: linear-gradient(to left, rgba(0,0,0,.5), rgba(0,0,0,.5)) , url('/public/assets/images/banner2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    border-radius: 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 4rem 2rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+
+
+.jumbotron .containers {
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    width: 100%;
+    z-index: 2;
+    padding: 2rem;
+    border-radius: 10px;
+    position: relative;
+}
+
+.announcements .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.announcements .card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.barangay-officials .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.barangay-officials .card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+    height: 200px;
+}
+
+.footer {
+    background-color: #343a40; /* Dark background */
+    color: #ffffff; /* Light text */
+    padding: 3rem 0; /* Vertical padding */
+    margin-bottom: -30px;
+}
+
+.footer-logo {
+    max-width: 150px; /* Adjust the size of the logo */
+    margin-bottom: 1rem;
+}
+
+.footer h5 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+}
+
+.footer a {
+    color: #ffffff; /* White text for links */
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.footer a i {
+    margin-right: 0.5rem;
+}
+
+.footer a:hover {
+    color: #007bff; /* Bootstrap primary color on hover */
+}
+
+.footer hr {
+    border-color: rgba(255, 255, 255, 0.3); /* Subtle divider */
+}
+.footer {
+    background-color: #343a40; /* Dark background */
+    color: #ffffff; /* Light text */
+    padding: 3rem 0; /* Vertical padding */
+}
+
+.footer-logo {
+    max-width: 150px; /* Adjust the size of the logo */
+    margin-bottom: 1rem;
+}
+
+.footer h5 {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+}
+
+.footer a {
+    color: #ffffff; /* White text for links */
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.footer a i {
+    margin-right: 0.5rem;
+}
+
+.footer a:hover {
+    color: #007bff; /* Bootstrap primary color on hover */
+}
+
+.footer hr {
+    border-color: rgba(255, 255, 255, 0.3); /* Subtle divider */
+}
+

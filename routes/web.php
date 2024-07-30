@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminControllerr;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PopulationController;
+use App\Http\Controllers\VoterController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\AnnouncementController;
 
 use App\Http\Controllers\IconController;
 
@@ -30,8 +34,22 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/admin/AddContent', ContentController::class);
     Route::resource('/admin/users', UsersController::class);
+
+    // POPULATIONS
+    Route::resource('/admin/populations', PopulationController::class);
+
+    // VOTERS
+    Route::resource('/admin/voters', VoterController::class);
+
+    // ANNOUNCEMENT
+    Route::resource('/admin/announcement', AnnouncementController::class);
+    
     
 });
+
+// CLIENT SIDE
+Route::get('/', [ClientController::class, 'index'])->name('home');  
+Route::get('/about', [ClientController::class, 'about'])->name('about');  
 
 
 // POST REQUEST ROUTE

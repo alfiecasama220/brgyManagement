@@ -88,7 +88,7 @@
     @include('admin.pages.sidebar')
 
     @include('admin.pages.header')
-
+    @include('admin.pages.breadCrumbs')
     @yield('content')
 
     <!-- Bootstrap JS and dependencies -->

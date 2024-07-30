@@ -2,24 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Announcement;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\AuthValidation;
-use App\Http\Requests\UserRequest;
+use Illuminate\Http\Request;
 
-use App\Models\User;
-
-class UsersController extends Controller
+class AnnouncementController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tables = User::all();
-        return view('admin.pages.users', compact('tables'));
+        $tables = Announcement::all();
+        return view('admin.pages.announcement', compact('tables'));
     }
 
     /**
@@ -33,31 +30,23 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, AuthValidation $requestInput)
+    public function store(Request $request)
     {
-
-        $validator = Validator::make($request->all(), $requestInput->rules());
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'message' => 'required',
+        ]);
 
         if($validator->passes()) {
-            $user = new User();
-
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->role = $request->role;
-            $user->save();
+            $announcement = new Announcement();
+            $announcement->title = $request->title;
+            $announcement->message = $request->message;
+            $announcement->save();
 
             return redirect()->back()->with('success', Session::get('addSuccess'));
         } else {
             return redirect()->back()->with('error', Session::get('addError'));
-        } 
-
-    }
-
-    public function messages() {
-        return [
-            'email.unique' => 'This email was taken from another user',
-        ];
+        }
     }
 
     /**
@@ -89,13 +78,6 @@ class UsersController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::find($id);
-
-        if($user) {
-            $user->delete();
-            return redirect()->back()->with('success', Session::get('deleteSuccess'));;
-        } else {
-            return redirect()->back()->with('error', 'User not found');
-        }
+        //
     }
 }

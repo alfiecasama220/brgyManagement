@@ -11,8 +11,8 @@
             <div class="card">
                 <div class="card-body text-center">
                     <img src="/assets/images/user.png" alt="Profile Picture" width="100%" class="profile-pic mb-3" id="profilePic">
-                    <h5 class="card-title">John Doe</h5>
-                    <p class="card-text">{{ Auth::user()->name }}</p>
+                    <h5 class="card-title">{{ Auth::user()->name }}</h5>
+                    {{-- <p class="card-text">{{ Auth::user()->name }}</p> --}}
                     <p class="card-text">{{ Auth::user()->role }}</p>
                     <input type="file" class="custom-file-input" id="profilePicInput" accept="image/*" style="display:none;">
                     <label class="upload-button" for="profilePicInput">
