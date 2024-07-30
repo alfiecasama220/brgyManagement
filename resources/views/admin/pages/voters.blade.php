@@ -79,6 +79,7 @@
                                     @php
                                         $date = $table->created_at;
                                         $dateTime = new DateTime($date);
+                                        $dateTime->setTimezone(new DateTimeZone('Asia/Manila'));
                                         $read = $dateTime->format('F j, Y, g:i A');
                                     @endphp
                                     <td>{{ $read }}</td>

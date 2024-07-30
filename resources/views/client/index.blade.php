@@ -27,6 +27,7 @@
                             @php
                                 $format = $table->created_at;
                                 $dateFormat = new DateTime($format);
+                                $dateFormat->setTimezone(new DateTimeZone('Asia/Manila'));
                                 $final = $dateFormat->format('F j, Y, g:i A');
                             @endphp
                             {{ $final }}

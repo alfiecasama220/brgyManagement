@@ -5,9 +5,10 @@
                 <img src="/assets/images/logo.png" alt="Logo" class="footer-logo">
             </div>
             <div class="col-md-3 mb-3">
-                <h5>Contact Us</h5>
+                <h5>Address and Contact Us</h5>
+                <p>Address: Purok San Juan, Buñao Dumaguete City, Negros Oriental</p>
                 <p>Email: info@barangay.com</p>
-                <p>Phone: (123) 456-7890</p>
+                <p>Phone: (035) 225 6369</p>
             </div>
             <div class="col-md-3 mb-3">
                 <h5>Follow Us</h5>
