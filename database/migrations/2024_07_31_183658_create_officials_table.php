@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('population', function (Blueprint $table) {
+        Schema::create('officials', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 200);
-            $table->string('address', 200);
-            $table->date('birthdate');
-            $table->boolean('voterSelect');
-            $table->string('voterID')->nullable();
+            $table->String('name', 200) ;
+            $table->unsignedBigInteger('position_id');
+            $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('population');
+        Schema::dropIfExists('officials');
     }
 };

@@ -9,12 +9,16 @@ class Voter extends Model
 {
     use HasFactory;
 
+    public function population() {
+        $this->hasMany(Population::class);
+    }
+
     protected $table = "voter";
 
-    protected $fillable = [
-        'voterID',
-        'name',
-        'address',
-        'age',
-    ];
+    // protected $fillable = [
+    //     'voterID',
+    //     'name',
+    //     'address',
+    //     'age',
+    // ];
 }

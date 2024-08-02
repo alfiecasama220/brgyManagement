@@ -95,7 +95,20 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    {{-- <script>
+        $(function () {
+        $('.datepicker').datepicker({
+            language: "es",
+            autoclose: true,
+            format: "dd/mm/yyyy"
+            });
+        });
+
+    </script>
     <script>
+        
         function toggleNewPopup() {
             var newOverlay = document.getElementById("newPopupContainer");
             var newPopup = newOverlay.querySelector(".new-popup");
@@ -130,14 +143,20 @@
         
 
         // Toggle Side Popup
-        document.getElementById('toggleSidePopup').addEventListener('click', function() {
-            document.getElementById('sidePopup').classList.toggle('show');
-        });
+        var toggleSidePopup = document.getElementById('toggleSidePopup');
+            if(toggleSidePopup) {
+            toggleSidePopup.addEventListener('click', function() {
+                document.getElementById('sidePopup').classList.toggle('show');
+            });
+        }
 
         // Close Side Popup
-        document.getElementById('closeSidePopup').addEventListener('click', function() {
-            document.getElementById('sidePopup').classList.remove('show');
-        });
+        var closeSidePopup = document.getElementById('closeSidePopup');
+            if(closeSidePopup) {
+            closeSidePopup.addEventListener('click', function() {
+                document.getElementById('sidePopup').classList.remove('show');
+            });
+        }
 
         // Close Side Popup on Escape key
         document.addEventListener('keydown', function(event) {
@@ -159,6 +178,26 @@
         function trigger() {
             showPopup();
         }
+
     </script>
+    <script>
+        var voterIDPromt = document.getElementById('voterIDPromt');
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var roles = document.getElementById('role');
+            if(roles) {
+                document.getElementById('role').addEventListener('click', () => {
+                var role = document.getElementById('role').value;
+                role.value = role;
+                if(role == 1) {
+                    voterIDPromt.classList.add('voterIDPromtShow');
+                } else {
+                    voterIDPromt.classList.remove('voterIDPromtShow');
+                }
+            });
+        }
+        })
+        
+    </script> --}}
+    
     </body>
 </html>

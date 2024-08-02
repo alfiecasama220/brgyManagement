@@ -21,12 +21,29 @@
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="email" name="address" value="{{ old('address') }}" required>
+                    <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
                 </div>
                 <div class="form-group">
-                    <label for="age">Age</label>
-                    <input type="text" class="form-control" id="email" name="age" value="{{ old('age') }}" required>
+                    <label for="address">Birthdate</label>
+                    <input type="date" placeholder="Choose Date" name="birthdate" class="form-control" id="fecha1">
                 </div>
+                <div class="form-group">
+                    <label for="role">Voters</label>
+                    <select class="form-control" id="role" name="role" required>
+                        <option id="options" value=""></option>
+                        <option id="options" value="1">Voters</option>
+                        <option id="options" value="0">Non-voterss</option>
+                        <!-- Add more roles as needed -->
+                    </select>
+                </div>
+                <div id="voterIDPromt" class="form-group voterIDPromt">
+                    <label for="address">Voter's ID</label>
+                    <input type="text" class="form-control" id="voterID" name="voterID" value="{{ old('voterID') }}">
+                </div>
+                {{-- <div class="form-group">
+                    <label for="birthdate">Birthdate</label>
+                    <input type="text" class="form-control" id="email" name="birthdate" value="{{ old('birthdate') }}" required>
+                </div> --}}
                 
                 {{-- <div class="form-group">
                     <label for="role">Role</label>
@@ -36,7 +53,7 @@
                         <!-- Add more roles as needed -->
                     </select>
                 </div> --}}
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button class="btn btn-primary">Add</button>
             </form>
         </div>
     </div>
@@ -59,18 +76,33 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Address</th>
-                                    <th>Age</th>
+                                    <th>Birthday</th>
+                                    <th>Status</th>
+                                    <th>Voter's ID</th>
                                     <th>Registered</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+
+                                @if (!$tables->isEmpty())
+                                    
                                 @foreach ($tables as $table)
                                 <tr>
                                     <td>{{ $table->id }}</td>
                                     <td>{{ $table->name }}</td>
                                     <td>{{ $table->address }}</td>
-                                    <td>{{ $table->age }}</td>
+                                    <td>{{ $table->birthdate }}</td>
+
+                                    @php
+                                        if($table->voterSelect  == 1) {
+                                            $status = "Voter";
+                                        } else {
+                                            $status = "Non-Voter";
+                                        }
+                                    @endphp
+                                    <td>{{ $status }}</td>
+                                    <td>{{ $table->voterID }}</td>
                                     @php
                                         $date = $table->created_at;
                                         $dateTime = new DateTime($date);
@@ -94,9 +126,19 @@
                                     </td>
                                 </tr>
                                 @endforeach
+
+                                @else
+                                    @php
+                                        $noData = "No data fetched";
+                                    @endphp
+                                @endif
                                 <!-- Add more user rows as needed -->
                             </tbody>
                         </table>
+                        @if(isset($noData))
+                            <div class="w-100 text-center"><p>{{ $noData }}</p></div>
+                        @endif
+                       
                     </div>
                 </div>
             </div>

@@ -10,6 +10,11 @@ use App\Http\Controllers\PopulationController;
 use App\Http\Controllers\VoterController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\OfficialsController;
+use App\Http\Controllers\NonVoterController;
+use App\Http\Controllers\ClientAuthController;
+use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\BlotterController;
 
 use App\Http\Controllers\IconController;
 
@@ -40,10 +45,15 @@ Route::middleware(['auth'])->group(function () {
 
     // VOTERS
     Route::resource('/admin/voters', VoterController::class);
+    
+    // NON-VOTERS
+    Route::resource('/admin/non-voters', NonVoterController::class);
 
     // ANNOUNCEMENT
     Route::resource('/admin/announcement', AnnouncementController::class);
-    
+
+    // OFFICIALS
+    Route::resource('/admin/officials', OfficialsController::class);
     
 });
 
@@ -51,6 +61,19 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', [ClientController::class, 'index'])->name('home');  
 Route::get('/about', [ClientController::class, 'about'])->name('about');  
 
+// CLIENT LOGIN
+Route::get('/register', [ClientAuthController::class, 'register'])->name('registerClient');  
+
+Route::get('/login', [ClientAuthController::class, 'login'])->name('loginClient');  
+Route::get('/logoutClient', [ClientAuthController::class, 'clientLogout'])->name('logoutClient');  
+// CLIENT POST REQUEST
+Route::post('/registerPost', [ClientAuthController::class, 'registerPost'])->name('registerClientPost');  
+Route::post('/loginPost', [ClientAuthController::class, 'loginPost'])->name('loginClientPost'); 
+
+Route::middleware('is_client')->group(function () {  
+    Route::resource('/request/certificates', CertificateController::class);
+    Route::resource('/request/blotter', BlotterController::class);
+});
 
 // POST REQUEST ROUTE
 

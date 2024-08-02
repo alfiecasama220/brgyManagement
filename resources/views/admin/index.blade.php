@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-light">
-    <div class="card p-4 shadow-lg border-0" style="max-width: 400px;">
+    <div class="card p-4 shadow-lg border-0 w-75" style="max-width: 400px;">
       <div class="card-body">
         <h3 class="card-title text-center mb-4">Admin Login</h3>
         <form action="{{ route('loginPost') }}" method="POST">

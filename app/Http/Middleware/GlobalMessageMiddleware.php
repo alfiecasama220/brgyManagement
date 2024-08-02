@@ -18,6 +18,8 @@ class GlobalMessageMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         Session::flash('addSuccess', 'Success! Your action was successful.');
+        Session::flash('loginSuccess', 'Success! Your are logged in.');
+        Session::flash('logoutSuccess', 'Success! Your are logged out.');
         Session::flash('deleteSuccess', 'Success! The data was deleted.');
         Session::flash('addError', 'Failed! Your action was unsuccessful.');
         Session::flash('emailError', 'Failed! This email was taken from another user.');

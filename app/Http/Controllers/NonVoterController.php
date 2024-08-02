@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Voter;
 use App\Models\Population;
 
-class VoterController extends Controller
+class NonVoterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tables = Population::all()->whereIn('voterSelect', '1');
-        return view('admin.pages.voters', compact('tables'));
+        $tables = Population::all()->whereIn('voterSelect', '0');
+        return view('admin.pages.non-voters', compact('tables'));
     }
 
     /**

@@ -373,3 +373,14 @@ body {
 .new-close-btn:hover {
     color: #f8f9fa;
 }
+
+/* VOTER ID PROMT */
+
+.voterIDPromt {
+    display: none;
+}
+
+.voterIDPromtShow {
+    display: flex;
+    flex-direction: column;
+}

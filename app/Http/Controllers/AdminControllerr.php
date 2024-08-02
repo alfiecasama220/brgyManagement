@@ -65,7 +65,7 @@ class AdminControllerr extends Controller
         
         if($validator->passes()) {
 
-            if(Auth::attempt(['email' => $loginRequest->email, 'password' => $loginRequest->password ])) {
+            if(Auth::attempt(['email' => $loginRequest->email, 'password' => $loginRequest->password ]) && Auth::user()->role == "Admin") {
                 Session(['role'=>Auth::user()->role]);
                 return redirect()->intended(route('dashboard'));
             } else { 

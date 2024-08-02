@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Hello! {{ session('role') }}</a>
+                        <a class="nav-link font-weight-bold" href="#">Hello! {{ session('role') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('profiles') }}">Profile</a>

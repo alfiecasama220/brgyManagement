@@ -14,12 +14,24 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('about') }}">About</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Officials</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Request
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('certificates.index') }}">Certificates</a>
+                    <a class="dropdown-item" href="{{ route('blotter.index') }}">Blotter</a>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
-            </li>
+            @if(session('LoggedInClient') == false)
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('loginClient') }}">Login</a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logoutClient') }}">Logout</a>
+                </li>
+            @endif
         </ul>
     </div>
 </header>

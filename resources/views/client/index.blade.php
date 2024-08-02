@@ -42,7 +42,7 @@
         <section class="barangay-officials mb-5">
             <h2 class="mb-4">Barangay Officials</h2>
             <div class="row">
-                @php
+                {{-- @php
                     $officials = [
                         ['name' => 'John Doe', 'position' => 'Barangay Captain', 'image' => '/assets/images/user.png'],
                         ['name' => 'Jane Smith', 'position' => 'Barangay Secretary', 'image' => '/assets/images/user.png'],
@@ -51,15 +51,26 @@
                         ['name' => 'Michael Green', 'position' => 'Kagawad', 'image' => '/assets/images/user.png'],
                         // Add more officials as needed
                     ];
-                @endphp
+                @endphp --}}
 
-                @foreach ($officials as $official)
+                {{-- @foreach ($officials as $official)
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-sm">
-                            <img src="{{ $official['image'] }}" class="card-img-top" alt="{{ $official['name'] }}">
+                            <img src="/assets/images/user.png" class="card-img-top" alt="{{ $official['name'] }}">
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $official['name'] }}</h5>
                                 <p class="card-text">{{ $official['position'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach --}}
+                @foreach ($officials as $official)
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm">
+                            <img src="/assets/images/user.png" class="card-img-top" alt="{{ $official['name'] }}">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ $official->name}}</h5>
+                                <p class="card-text">{{ $official->position->title }}</p>
                             </div>
                         </div>
                     </div>

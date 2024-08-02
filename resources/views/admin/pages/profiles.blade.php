@@ -10,7 +10,7 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body text-center">
-                    <img src="/assets/images/user.png" alt="Profile Picture" width="100%" class="profile-pic mb-3" id="profilePic">
+                    <img src="/assets/images/mat2.jpg" alt="Profile Picture" width="100%" class="profile-pic mb-3" id="profilePic">
                     <h5 class="card-title">{{ Auth::user()->name }}</h5>
                     {{-- <p class="card-text">{{ Auth::user()->name }}</p> --}}
                     <p class="card-text">{{ Auth::user()->role }}</p>

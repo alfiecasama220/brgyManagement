@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Officials;
+use App\Models\Positions;
 use Illuminate\Support\Facades\Session;
-use App\Models\Voter;
-use App\Models\Population;
+use Illuminate\Support\Facades\Validator;
 
-class VoterController extends Controller
+class OfficialsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tables = Population::all()->whereIn('voterSelect', '1');
-        return view('admin.pages.voters', compact('tables'));
+        // $tables = Officials::all();
+        $position = Positions::all();
+        $tables = Officials::with('position')->get();
+        return view(('admin.pages.officials'), compact(['tables', 'position']));
     }
 
     /**
@@ -33,20 +35,15 @@ class VoterController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'voterID' => 'required',
             'name' => 'required',
-            'address' => 'required',
-            'age' => 'required',
+            'position' => 'required',
         ]);
 
         if($validator->passes()) {
-            $voters = new Voter();
-
-            $voters->voterID = $request->voterID;
-            $voters->name = $request->name;
-            $voters->address = $request->address;
-            $voters->age = $request->age;
-            $voters->save();
+            $officials = new Officials();
+            $officials->name = $request->name;
+            $officials->position_id = $request->position;
+            $officials->save();
 
             return redirect()->back()->with('success', Session::get('addSuccess'));
         } else {
@@ -59,7 +56,8 @@ class VoterController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
+        // return view('admin.pages.officials', compact('position'));  
     }
 
     /**

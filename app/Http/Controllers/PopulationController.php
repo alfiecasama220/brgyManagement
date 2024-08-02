@@ -16,6 +16,7 @@ class PopulationController extends Controller
     public function index()
     {
         $tables = Population::all();
+
         return view('admin.pages.populations', compact(['tables']));
     }
 
@@ -35,7 +36,9 @@ class PopulationController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'address' => 'required',
-            'age' => 'required',
+            'birthdate' => 'required',
+            'role' => 'required',
+            'voterID' => 'nullable',
         ]);
 
         if($validator->passes()) {
@@ -43,7 +46,15 @@ class PopulationController extends Controller
 
             $populatioon->name = $request->name;
             $populatioon->address = $request->address;
-            $populatioon->age = $request->age;
+            $populatioon->birthdate = $request->birthdate;
+            $populatioon->voterSelect = $request->role;
+
+            if($request->voterID == null) {
+                $populatioon->voterID = "N/A";
+            } else {
+                $populatioon->voterID = $request->voterID;
+            }
+            
             $populatioon->save();
 
             return redirect()->back()->with('success', Session::get('addSuccess'));

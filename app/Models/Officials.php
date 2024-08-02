@@ -4,20 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+// use App\Models\Positions;
 
-class Population extends Model
+class Officials extends Model
 {
     use HasFactory;
 
-    public function voter()  {
-        $this->belongsTo(Voter::class);
+    public function position() {
+        return $this->belongsTo(Positions::class);
     }
 
-    protected $table = 'population';
+    // protected $table = "officials";
 
     // protected $fillable = [
     //     'name',
-    //     'address',
-    //     'age',
+    //     'position',
     // ];
 }

@@ -53,7 +53,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="card-title">Voters</h5>
-                        <button class="btn btn-success" id="toggleSidePopup"><i class="fas fa-user-plus"></i> Add Voters</button>
+                        {{-- <button class="btn btn-success" id="toggleSidePopup"><i class="fas fa-user-plus"></i> Add Voters</button> --}}
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -63,7 +63,7 @@
                                     <th>Voter's ID</th>
                                     <th>Name</th>
                                     <th>Address</th>
-                                    <th>Age</th>
+                                    <th>Birthday</th>
                                     <th>Registered</th>
                                     <th>Actions</th>
                                 </tr>
@@ -75,7 +75,7 @@
                                     <td>{{ $table->voterID }}</td>
                                     <td>{{ $table->name }}</td>
                                     <td>{{ $table->address }}</td>
-                                    <td>{{ $table->age }}</td>
+                                    <td>{{ $table->birthdate }}</td>
                                     @php
                                         $date = $table->created_at;
                                         $dateTime = new DateTime($date);

@@ -13,10 +13,8 @@ return new class extends Migration
     {
         Schema::create('voter', function (Blueprint $table) {
             $table->id();
-            $table->string('voterID', 100);
-            $table->string('name', 100);
-            $table->string('age', 100);
-            $table->string('address', 100);
+            $table->unsignedBigInteger('population_id');
+            $table->foreign('population_id')->references('id')->on('population')->onDelete('cascade');
             $table->timestamps();
         });
     }
