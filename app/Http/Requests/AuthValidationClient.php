@@ -25,6 +25,7 @@ class AuthValidationClient extends FormRequest
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required',
+            'document' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ];
     }
 

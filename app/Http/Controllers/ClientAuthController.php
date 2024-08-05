@@ -26,9 +26,11 @@ class ClientAuthController extends Controller
         $validator = Validator::make($request->all(), $authValidate->rules());
         if($validator->passes()) {
             $user = new User();
+            $imagePath = $request->file('document')->store('documents', 'public');
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
+            $user->document = $imagePath;
             $user->save();
 
             return redirect()->intended(route('loginClient'))->with('success', Session::get("addSuccess"));
@@ -41,12 +43,12 @@ class ClientAuthController extends Controller
         $validator = Validator::make($request->all(), $loginRequest->rules());
 
         if($validator->passes()) {
-            if(Auth::attempt(['email' => $loginRequest->email, 'password' => $loginRequest->password]) && Auth::user()->role == "Client") {
+            if(Auth::attempt(['email' => $loginRequest->email, 'password' => $loginRequest->password]) && Auth::user()->role == "Client" && Auth::user()->verified == 1) {
                 session(['username'=>Auth::user()->name]);
                 session(['LoggedInClient' => true]);
                 return redirect()->intended(route('home'))->with('success', Session::get('loginSuccess'));
             } else {
-                return redirect()->back()->with('error', "Invalid Email or Password");
+                return redirect()->back()->with('error', "Invalid Email or Password");  
             } 
         }
     }

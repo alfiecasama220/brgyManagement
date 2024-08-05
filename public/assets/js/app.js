@@ -95,3 +95,13 @@
             });
         }
         })
+
+
+        
+    $(document).ready(function() {
+        // When an image is clicked, set the modal image source
+        $('.clickable-image').on('click', function() {
+            var imgSrc = $(this).data('src');
+            $('#modalImage').attr('src', imgSrc);
+        });
+    });

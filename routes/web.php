@@ -15,6 +15,7 @@ use App\Http\Controllers\NonVoterController;
 use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\BlotterController;
+use App\Http\Controllers\ClientAdminController;
 
 use App\Http\Controllers\IconController;
 
@@ -39,6 +40,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('/admin/AddContent', ContentController::class);
     Route::resource('/admin/users', UsersController::class);
+    Route::get('/admin/clients', [UsersController::class, 'clients'])->name('adminClients');
+    // Route::get('/admin/clients', [ClientAdminController::class, 'clients'])->name('adminClients');
+
+    // ACCEPTED AND REJECTED
+
+    // Route::resource('/admin/accepted', UsersController::class);
+    Route::patch('/admin/user/accepted/{id}', [UsersController::class, 'accepted'])->name('accepted');
+    Route::patch('/admin/user/rejected/{id}', [UsersController::class, 'rejected'])->name('rejected');
+
 
     // POPULATIONS
     Route::resource('/admin/populations', PopulationController::class);
@@ -73,6 +83,10 @@ Route::post('/loginPost', [ClientAuthController::class, 'loginPost'])->name('log
 Route::middleware('is_client')->group(function () {  
     Route::resource('/request/certificates', CertificateController::class);
     Route::resource('/request/blotter', BlotterController::class);
+
+    Route::get('/notify-user', function () {
+
+    });
 });
 
 // POST REQUEST ROUTE

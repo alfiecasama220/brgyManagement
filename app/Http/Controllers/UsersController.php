@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\AuthValidation;
@@ -18,8 +19,38 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $tables = User::all();
+        $tables = User::all()->where('role', 'Admin');
         return view('admin.pages.users', compact('tables'));
+    }
+
+    public function clients()
+    {
+        $tables = User::all()->where('role', 'Client');
+        return view('admin.pages.clients', compact('tables'));
+    }
+
+    public function accepted($id) {
+        $items = User::findOrFail($id);
+
+        if($items) {
+            $items->verified = User::accepted;
+
+            return redirect()->back()->with('success', Session::get('verified'));
+        } else {
+            return redirect()->back()->with('success', "Error");
+        }
+    }
+
+    public function rejected(Request $request, $id) {
+        $items = User::findOrFail($id);
+
+        if($items) {
+            $items->verified = User::rejected;
+
+            return redirect()->back()->with('success', Session::get('verified'));
+        } else {
+            return redirect()->back()->with('success', "Error");
+        }
     }
 
     /**
@@ -65,7 +96,7 @@ class UsersController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // 
     }
 
     /**

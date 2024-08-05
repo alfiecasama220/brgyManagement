@@ -11,7 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    
+    const accepted = 1;
+    const rejected = 0;
 
     /**
      * The attributes that are mass assignable.

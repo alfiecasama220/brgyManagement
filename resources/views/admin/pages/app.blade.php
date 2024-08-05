@@ -13,77 +13,7 @@
 </head>
     <body>
 
-        {{-- <!-- Button to trigger the popup -->
-        <button class="btn btn-primary" onclick="showPopup()">Show Popup</button> --}}
-
-        @if (session('success'))
-            <script>
-                window.addEventListener("load", (event) => {
-                    trigger();
-                });
-            </script>
-        @elseif($errors->has('email'))
-            <script>
-                window.addEventListener("load", (event) => {
-                    trigger();
-                });
-            </script>
-        @endif
-
-        {{-- <script>
-        window.addEventListener("load", (event) => {
-            trigger();
-        });
-        </script> --}}
-
-        @php 
-
-        if(session('success')) {
-            $msg = session('success');
-            $word = explode(' ', $msg);
-            $firstWord = $word[0];
-
-            $string = session('success');
-            $sWord = explode(' ', $string);
-            array_shift($sWord);
-            $mod = implode(' ', $sWord);
-        } else {
-            $msg = $errors->first('email');
-            $word = explode(' ', $msg);
-            $firstWord = $word[0];
-
-            $string = $errors->first('email');
-            $sWord = explode(' ', $string);
-            array_shift($sWord);
-            $mod = implode(' ', $sWord);
-        }
-   
-        
-
-        
-
-
-
-        @endphp
-
-        <!-- Popup Message -->
-        <div class="popup 
-            @if(session('success'))
-                bg-success
-            @else
-                bg-danger
-            @endif
-            " id="popup">
-        <span><strong>
-            {{ 
-            
-                $firstWord
-                
-            }}
-        </strong> 
-            {{ $mod }}
-        </span>
-        </div>
+    @include('admin.pages.messages')
 
     @include('admin.pages.sidebar')
 
@@ -93,7 +23,7 @@
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>

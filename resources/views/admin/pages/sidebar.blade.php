@@ -8,6 +8,9 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-users mr-2"></i>Users</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('adminClients') }}"><i class="fas fa-users mr-2"></i>Clients</a>
+        </li>
         {{-- <li class="nav-item">
             <a class="nav-link" href="{{ route('AddContent.create') }}"><i class="fass bi-body-text mr-2"></i>Add Category</a>
         </li>

@@ -9,15 +9,16 @@
         <h2 class="text-center">Login</h2>
         <form action="{{ route('loginClientPost') }}" method="POST">
             @csrf
+            <small class="h6 text-danger">{{ session('error') }}</small>
             <div class="form-group position-relative">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-                <i class="fas fa-envelope"></i>
+                <input type="email" class="form-control @if(session('error')) is-invalid border-danger @endif" id="email" name="email" placeholder="Enter your email" required>
+                @if(!session('error'))<i class="fas fa-envelope"></i>@endif
             </div>
             <div class="form-group position-relative">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
-                <i class="fas fa-lock"></i>
+                <input type="password" class="form-control @if(session('error')) is-invalid border-danger @endif" id="password" name="password" placeholder="Enter your password" required>
+                @if(!session('error'))<i class="fas fa-lock"></i>@endif
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>

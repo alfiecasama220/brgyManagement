@@ -4,12 +4,7 @@
 
 @section('content')
 
-<div class="jumbotron text-center">
-    <div class="containers">
-        <h1 class="display-4">About Us</h1>
-        <p class="lead">Welcome to our community! We are dedicated to serving our residents and providing the latest updates and information.</p>
-    </div>
-</div>
+@include('client.banner')
 
 <div class="container my-5"  style="height: 60vh">
     <div class="row">

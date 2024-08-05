@@ -44,6 +44,7 @@ body {
 
 .card-body {
     padding: 20px;
+    height: auto;
 }
 .card-title {
     font-size: 1.2rem;
@@ -90,7 +91,6 @@ body {
 
 .table-responsive {
     border-radius: 15px;
-    overflow: hidden;
 }
 
 .table thead th {
@@ -98,6 +98,7 @@ body {
     background-color: #007bff;
     color: #fff;
     font-weight: bold;
+    height: auto;
 }
 
 .table tbody tr {
@@ -383,4 +384,21 @@ body {
 .voterIDPromtShow {
     display: flex;
     flex-direction: column;
+}
+
+/* MODAL AND DROPDOWN */
+
+/* Custom styles for the dropdown and modal */
+/* .dropdown-menu a.dropdown-item:hover {
+    background-color: #007bff;
+    color: #fff;
+} */
+
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.close:focus {
+    outline: none;
 }

@@ -4,10 +4,10 @@
 
 @section('content')
 
-<div class="container" style="height: 50vh;">
+<div class="container" style="height: auto;">
     <div class="register-form">
         <h2 class="text-center">Register</h2>
-        <form action="{{ route('registerClientPost') }}" method="POST">
+        <form action="{{ route('registerClientPost') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group position-relative">
                 <label for="name">Name</label>
@@ -23,6 +23,16 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
                 <i class="fas fa-lock"></i>
+            </div>
+            {{-- <div class="form-group">
+                <label for="upload">To verify your identity</label>
+            </div> --}}
+            <div class="form-group">
+                <small class="text-danger" for="upload">To verify your identity upload your Valid ID</small>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="upload" name="document" accept="image/*" required>
+                    <label class="custom-file-label" for="upload">Choose file</label>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
