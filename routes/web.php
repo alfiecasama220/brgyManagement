@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     // CONTENT
 
     Route::resource('/admin/AddContent', ContentController::class);
+    Route::resource('/admin/AddContent/AddPopulation', ContentController::class);
     Route::resource('/admin/users', UsersController::class);
     Route::get('/admin/clients', [UsersController::class, 'clients'])->name('adminClients');
     // Route::get('/admin/clients', [ClientAdminController::class, 'clients'])->name('adminClients');

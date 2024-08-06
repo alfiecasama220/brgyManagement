@@ -23,7 +23,7 @@
                     <a class="dropdown-item" href="{{ route('blotter.index') }}">Blotter</a>
                 </div>
             </li>
-            @if(session('LoggedInClient') == false)
+            @if(Session::get('LoggedInClient') == false)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('loginClient') }}">Login</a>
                 </li>
@@ -33,5 +33,5 @@
                 </li>
             @endif
         </ul>
-    </div>
+    </div>  
 </header>

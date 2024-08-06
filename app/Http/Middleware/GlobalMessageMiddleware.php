@@ -17,6 +17,10 @@ class GlobalMessageMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // if(Auth::check()) {
+        //     Session::flash('LoggedInClient', true);
+        // }       
+        
         Session::flash('addSuccess', 'Success! Your action was successful.');
         Session::flash('verify', 'Success! You accepted this user.');
         Session::flash('verifyReject', 'Success! You rejected this user.');

@@ -52,6 +52,10 @@ class ContentController extends Controller
 
     }
 
+    public function position() {
+        
+    }
+
     /**
      * Display the specified resource.
      */

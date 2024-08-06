@@ -43,13 +43,22 @@ class ClientAuthController extends Controller
         $validator = Validator::make($request->all(), $loginRequest->rules());
 
         if($validator->passes()) {
-            if(Auth::attempt(['email' => $loginRequest->email, 'password' => $loginRequest->password]) && Auth::user()->role == "Client" && Auth::user()->verified == 1) {
-                session(['username'=>Auth::user()->name]);
-                session(['LoggedInClient' => true]);
-                return redirect()->intended(route('home'))->with('success', Session::get('loginSuccess'));
-            } else {
+
+            if(!User::where('email', $loginRequest->email)->exists()) {
                 return redirect()->back()->with('error', "Invalid Email or Password");  
-            } 
+            }
+            else {
+                if(Auth::attempt(['email' => $loginRequest->email, 'password' => $loginRequest->password]) && Auth::user()->role == "Client" && Auth::user()->verified == 1) {
+                    session(['username'=>Auth::user()->name]);
+                    Session::put('LoggedInClient', true);
+                    return redirect()->intended(route('home'))->with('success', Session::get('loginSuccess'));
+                } else if(Auth::attempt(['email' => $loginRequest->email, 'password' => $loginRequest->password]) && Auth::user()->role == "Client" && Auth::user()->verified == 0) {
+                    return redirect()->back()->with('error', "Failed! Your account is not activated by the admin.");  
+                } else {
+                    return redirect()->back()->with('error', "Invalid Email or Password");
+                }                                   
+            }
+        
         }
     }
 

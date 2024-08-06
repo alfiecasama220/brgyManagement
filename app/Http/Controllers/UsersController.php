@@ -33,9 +33,11 @@ class UsersController extends Controller
         $items = User::findOrFail($id);
 
         if($items) {
+            // return User::accepted;
             $items->verified = User::accepted;
+            $items->save();
 
-            return redirect()->back()->with('success', Session::get('verified'));
+            return redirect()->back()->with('success', Session::get('verify'));
         } else {
             return redirect()->back()->with('success', "Error");
         }
@@ -45,9 +47,12 @@ class UsersController extends Controller
         $items = User::findOrFail($id);
 
         if($items) {
+            // return User::rejected;
             $items->verified = User::rejected;
-
-            return redirect()->back()->with('success', Session::get('verified'));
+            $items->save();
+            // Session::flash('LoggedInClient', false)
+            Session::put('LoggedInClient', false);
+            return redirect()->back()->with('success', Session::get('verifyReject'));
         } else {
             return redirect()->back()->with('success', "Error");
         }
