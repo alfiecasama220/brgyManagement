@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\AuthValidation;
 use App\Http\Requests\UserRequest;
 
+use App\Mail\UserNotificationMail;
+use App\Notifications\UserNotifications;
 use App\Models\User;
 
 class UsersController extends Controller
@@ -36,6 +39,8 @@ class UsersController extends Controller
             // return User::accepted;
             $items->verified = User::accepted;
             $items->save();
+
+            Mail::to($items->email)->send(new UserNotificationMail('Success! your account is successfully activated.'));
 
             return redirect()->back()->with('success', Session::get('verify'));
         } else {
@@ -117,7 +122,49 @@ class UsersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required',
+        ]);
+
+        
+
+        if($validator->passes()) {
+           
+            if($request->password === $request->password_confirmation) {
+                $users = User::findOrFail($id);
+                if($users) {
+                    $users->email = $request->email;
+                    $users->password = Hash::make($request->password);
+                    $users->save();
+
+                    return redirect()->back()->with('success', Session::get('updateSuccess'));
+                }
+            
+            } else {
+                return redirect()->back()->with('error', Session::get('passwordNotMatch'));
+                }
+            }
+    }
+
+    public function profilesImage(Request $request , string $id) {
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|file|max:7128',
+        ]);
+        
+        if($validator->passes()) {      
+            $users = User::findOrFail($id);
+            if($users) {
+                $path = $request->file('image')->store('profile', 'public');
+                $users->image = $path;
+                $users->save();
+
+                return redirect()->back()->with('success', Session::get('updateSuccess'));
+            } else {
+            return redirect()->back()->with('error', Session::get('addError'));
+            }
+        }
     }
 
     /**

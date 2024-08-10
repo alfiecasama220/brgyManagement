@@ -31,7 +31,12 @@ class AdminControllerr extends Controller
     }
 
     public function profiles() {
-        return view('admin.pages.profiles');
+        if(Auth::user()->image == null) {
+            $noPic = '/assets/images/user.png';
+        } else {
+            $noPic = '/storage/' .  Auth::user()->image;
+        }
+        return view('admin.pages.profiles', compact('noPic'));
     }
 
     public function users() {

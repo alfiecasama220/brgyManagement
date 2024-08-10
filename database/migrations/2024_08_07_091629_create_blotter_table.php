@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certificate', function (Blueprint $table) {
+        Schema::create('blotter', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email');
             $table->string('address');
             $table->string('contact');
-            $table->string('birthdate');
+            $table->string('image')->nullable();
             $table->text('purpose');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('certificate');
+        Schema::dropIfExists('blotter');
     }
 };

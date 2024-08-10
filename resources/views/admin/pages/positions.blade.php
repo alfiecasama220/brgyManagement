@@ -1,6 +1,6 @@
 @extends('admin.pages.app')
 
-@section('Title', 'Officials')
+@section('Title', 'Position')
 
 @section('content')
 
@@ -10,26 +10,15 @@
 <div class="side-popup" id="sidePopup">
     <div class="side-popup-content">
         <div class="side-popup-header">
-            <h5 class="side-popup-title">Add Officials</h5>
+            <h5 class="side-popup-title">Add Position</h5>
             <span class="side-popup-close" id="closeSidePopup">&times;</span>
         </div>
         <div class="modal-body">
-            <form id="addUserForm" method="POST" action="{{ route('officials.store') }}">
+            <form id="addUserForm" method="POST" action="{{ route('addPosition') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Position Name</label>
                     <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
-                </div>
-                <div class="form-group">
-                    <label for="role">Position</label>
-                    <select class="form-control" id="position" name="position" required>
-                        <option value=""></option>
-                        @foreach ($position as $positions )
-                            <option value="{{ $positions->id }}">{{ $positions->title }}</option>
-                        @endforeach
-                        
-                        <!-- Add more roles as needed -->
-                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>
@@ -43,10 +32,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5 class="card-title w-25">Barangay Officials</h5>
+                        <h5 class="card-title">Barangay Officials</h5>
                         <div class="w-100 d-flex justify-content-end">
-                            <a href="{{ route('officials.create') }}" class="btn btn-success mr-2"><i class="fas fa-user-plus"></i> Add Positions</a>
-                            <button class="btn btn-success" id="toggleSidePopup"><i class="fas fa-user-plus"></i> Add Officials</button>
+                            {{-- <a href="" class="btn btn-success mr-2"><i class="fas fa-user-plus"></i> Add Positions</a> --}}
+                            <button class="btn btn-success" id="toggleSidePopup"><i class="fas fa-user-plus"></i> Add Position</button>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -55,8 +44,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Date posted</th>
+                                    <th>Date Created</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -64,8 +52,7 @@
                                 @foreach ($tables as $table)
                                 <tr>
                                     <td>{{ $table->id }}</td>
-                                    <td>{{ $table->name }}</td>
-                                    <td>{{ $table->position->title }}</td>
+                                    <td>{{ $table->title }}</td>
                                     @php
                                         $date = $table->created_at;
                                         $dateTime = new DateTime($date);
@@ -75,12 +62,12 @@
                                     <td>{{ $read }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <div><button class="btn btn-primary btn-sm ml-3"><i class="fas fa-edit"></i> Edit</button></div>
+                                            {{-- <div><button class="btn btn-primary btn-sm ml-3"><i class="fas fa-edit"></i> Edit</button></div> --}}
                                             <div>
-                                                <form action="{{ route('officials.destroy' , $table->id) }}" method="POST">
+                                                <form action="{{ route('deletePosition' , $table->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-danger btn-sm ml-3"><i class="fas fa-trash"></i> Delete</button>
+                                                    <button class="btn btn-danger btn-sm ml-3 bg-danger"><i class="fas fa-trash"></i> Delete</button>
                                                 </form>
                                             </div>  
                                         </div>

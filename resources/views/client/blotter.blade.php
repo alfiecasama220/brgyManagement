@@ -6,9 +6,12 @@
 
 <div class="certificate-page">
     <div class="certificate-form">
-        <form method="POST" action="{{ route('certificates.store') }}">
+        <form method="POST" action="{{ route('blotter.index') }}" enctype="multipart/form-data">
             @csrf
             <h3>Blotter Request Form</h3>
+            @if (session('success'))
+                <h5 class="text-success">{{ session('success') }}</h5>
+            @endif
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" class="form-control" id="name" value="{{ Auth::user()->name }}" name="name" required>
@@ -23,7 +26,14 @@
             </div>
             <div class="form-group">
                 <label for="contact-no">Contact Number</label>
-                <input type="text" class="form-control" id="contact-no" name="contact_no" required>
+                <input type="text" class="form-control" id="contact-no" name="contactNo" required>
+            </div>
+            <div class="form-group">
+                <small class="text-danger" for="upload">Proof (Optional)</small>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="upload" name="image" accept="image/*">
+                    <label class="custom-file-label" for="upload">Choose file</label>
+                </div>
             </div>
             <div class="form-group">
                 <label for="purpose">Reason</label>

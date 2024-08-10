@@ -16,6 +16,8 @@ use App\Http\Controllers\ClientAuthController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\BlotterController;
 use App\Http\Controllers\ClientAdminController;
+use App\Http\Controllers\AdminCertificateController;
+use App\Http\Controllers\AdminBlottterController;
 
 use App\Http\Controllers\IconController;
 
@@ -32,6 +34,7 @@ Route::get('/admin/register', [AdminControllerr::class, 'register'])->name('regi
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [AdminControllerr::class, 'dashboard'])->name('dashboard');
     Route::get('/admin/profiles', [AdminControllerr::class, 'profiles'])->name('profiles');
+    Route::patch('/admin/profiles/upload/{id}', [UsersController::class, 'profilesImage'])->name('profilesImage');
 
     // Route::get('/admin/{description}', [AdminControllerr::class, 'profiles'])->name('description');
     // Route::get('/admin/users', [AdminControllerr::class, 'users'])->name('users');
@@ -65,6 +68,18 @@ Route::middleware(['auth'])->group(function () {
 
     // OFFICIALS
     Route::resource('/admin/officials', OfficialsController::class);
+
+    // ADD AND DELETE POSITION
+    // Route::get('/admin/officials/positions', [OfficialsController::class, 'positions'])->name('positions');
+    Route::post('/admin/officials/AddPosition', [OfficialsController::class, 'storePosition'])->name('addPosition');
+    Route::delete('/admin/officials/DeletePosition/{id}', [OfficialsController::class, 'deletePosition'])->name('deletePosition');
+
+    // CERTIFICATES
+    Route::get('/admin/certificates', [AdminCertificateController::class, 'index'])->name('certificates');
+    Route::delete('/admin/certificatesDelete/{id}', [AdminCertificateController::class, 'certificatesDelete'])->name('certificatesDelete');
+
+    // BLOTTER
+    Route::get('/admin/blotter', [AdminBlottterController::class, 'index'])->name('blotter');
     
 });
 
@@ -95,3 +110,10 @@ Route::middleware('is_client')->group(function () {
 Route::post('/admin/registerPost', [AdminControllerr::class, 'registerPost'])->name('registerPost');
 
 Route::post('/admin/loginPost', [AdminControllerr::class, 'loginPost'])->name('loginPost');
+
+
+// EMAIL HANDLING ROUTE
+
+// route::get('/activation', function () {
+//     view('')
+// });

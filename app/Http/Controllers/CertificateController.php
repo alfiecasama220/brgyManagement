@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Validator;
+
+use App\Models\Certificate;
+
 class CertificateController extends Controller
 {
     /**
@@ -27,7 +31,32 @@ class CertificateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'addres' => 'required',
+            'contactNo' => 'required',
+            'birthdate' => 'required',
+            'purpose' => 'required',
+        ]);
+
+        if($validator) {
+            $cert = new Certificate();
+
+            $cert->name = $request->name;
+            $cert->email = $request->email;
+            $cert->address = $request->address;
+            $cert->contact = $request->contactNo;
+            $cert->birthdate = $request->birthdate;
+            $cert->purpose = $request->purpose;
+
+            $cert->save();
+
+            return redirect()->back()->with('success', 'Success! Your request has been added');
+            
+        } else {
+            return redirect()->back()->with('error', 'Failed! Your request is not added');
+        }
     }
 
     /**

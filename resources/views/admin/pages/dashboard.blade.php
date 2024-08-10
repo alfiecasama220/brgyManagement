@@ -12,9 +12,9 @@
                 ['title' => 'Populations', 'icon' => 'bi-people', 'link' => 'populations.index'],
                 ['title' => 'Voters', 'icon' => 'bi-person-check', 'link' => 'voters.index'],
                 ['title' => 'Non-Voters', 'icon' => 'bi-person-x', 'link' => 'non-voters.index'],
-                ['title' => 'Certificates', 'icon' => 'bi-file-earmark-text', 'link' => 'populations.index'],
-                ['title' => 'Announcement', 'icon' => 'bi-megaphone', 'link' => 'announcement.index'],
-                ['title' => 'Blotter', 'icon' => 'bi-journal-text', 'link' => 'populations.index'],
+                ['title' => 'Certificates Request', 'icon' => 'bi-file-earmark-text', 'link' => 'certificates'],
+                ['title' => 'Blotter', 'icon' => 'bi-journal-text', 'link' => 'blotter'],
+                ['title' => 'Announcement', 'icon' => 'bi-megaphone', 'link' => 'announcement.index'],              
                 ['title' => 'Barangay Officials', 'icon' => 'bi-person-badge', 'link' => 'officials.index'],
             ];
         @endphp

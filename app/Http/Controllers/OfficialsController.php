@@ -26,7 +26,8 @@ class OfficialsController extends Controller
      */
     public function create()
     {
-        //
+        $tables = Positions::all();
+        return view('admin.pages.positions', compact('tables'));
     }
 
     /**
@@ -48,6 +49,32 @@ class OfficialsController extends Controller
             return redirect()->back()->with('success', Session::get('addSuccess'));
         } else {
             return redirect()->back()->with('error', Session::get('addError'));
+        }
+    }
+
+    public function storePosition(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+
+        if($validator->passes()) {
+            $officials = new Positions();
+            $officials->title = $request->name;
+            $officials->save();
+
+            return redirect()->back()->with('success', Session::get('addSuccess'));
+        } else {
+            return redirect()->back()->with('error', Session::get('addError'));
+        }
+    }
+
+    public function deletePosition(string $id) {
+        $id = Positions::findOrFail($id);
+
+        if($id) {
+            $id->delete();
+
+            return redirect()->back()->with('success', Session::get('deleteSuccess'));
         }
     }
 
@@ -81,6 +108,12 @@ class OfficialsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $id = Officials::findOrFail($id);
+
+        if($id) {
+            $id->delete();
+
+            return redirect()->back()->with('success', Session::get('deleteSuccess'));
+        }
     }
 }

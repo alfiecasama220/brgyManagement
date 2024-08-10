@@ -105,3 +105,14 @@
             $('#modalImage').attr('src', imgSrc);
         });
     });
+
+
+    var profileImageForm = document.getElementById('profileImageForm');
+    var profilePicInput = document.getElementById('profilePicInput');
+
+    profilePicInput.addEventListener('change', submitForm);
+
+    function submitForm() {
+        // Automatically submit the form when a file is selected
+        profileImageForm.submit();
+    }

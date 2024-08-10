@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+use App\Models\Blotter;
 
 class BlotterController extends Controller
 {
@@ -27,7 +30,34 @@ class BlotterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'addres' => 'required',
+            'contactNo' => 'required',
+            'purpose' => 'required',
+            'image' => 'nullable|file|max:7128',
+        ]);
+
+        if($validator) {
+            $cert = new Blotter();
+
+            $path = $request->file('image')->store('images','public');
+
+            $cert->name = $request->name;
+            $cert->email = $request->email;
+            $cert->address = $request->address;
+            $cert->contact = $request->contactNo;
+            $cert->purpose = $request->purpose;
+            $cert->image = $path;
+
+            $cert->save();
+
+            return redirect()->back()->with('success', 'Success! Your request has been added');
+            
+        } else {
+            return redirect()->back()->with('error', 'Failed! Your request is not added');
+        }
     }
 
     /**

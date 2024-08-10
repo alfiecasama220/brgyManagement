@@ -9,7 +9,11 @@
         <h2 class="text-center">Login</h2>
         <form action="{{ route('loginClientPost') }}" method="POST">
             @csrf
-            <small class="h6 text-danger">{{ session('error') }}</small>
+            @if (session('success'))
+                <h5 class="text-success">{{ session('success') }}</h5>
+        @elseif (session('error') || $errors->has('email'))
+            <h5 class="text-danger">{{ session('error') ?: $errors->first('email') }}</h5>
+        @endif
             <div class="form-group position-relative">
                 <label for="email">Email</label>
                 <input type="email" class="form-control @if(session('error')) is-invalid border-danger @endif" id="email" name="email" placeholder="Enter your email" required>

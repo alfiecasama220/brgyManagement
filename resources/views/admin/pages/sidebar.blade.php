@@ -17,8 +17,8 @@
         <li class="nav-item">
             <a class="nav-link" href="#"><i class="fas fa-chart-line mr-2"></i>Analytics</a>
         </li> --}}
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" href="#"><i class="fas fa-cog mr-2"></i>Settings</a>
-        </li>
+        </li> --}}
     </ul>
 </div>w

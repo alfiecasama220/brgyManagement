@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('verified')->default(0);
             $table->string('document')->nullable();
             $table->string('password');
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -10,6 +10,9 @@
         <form method="POST" action="{{ route('certificates.store') }}">
             @csrf
             <h3>Certificate Request Form</h3>
+            @if (session('success'))
+                <h5 class="text-success">{{ session('success') }}</h5>
+            @endif
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" class="form-control" id="name" value="{{ Auth::user()->name }}" name="name" required>
@@ -24,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="contact-no">Contact Number</label>
-                <input type="text" class="form-control" id="contact-no" name="contact_no" required>
+                <input type="text" class="form-control" id="contactNo" name="contactNo" required>
             </div>
             <div class="form-group">
                 <label for="birthdate">Birthdate</label>

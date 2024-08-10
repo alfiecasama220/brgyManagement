@@ -7,7 +7,7 @@
                     trigger();
                 });
             </script>
-        @elseif($errors->has('email'))
+        @elseif($errors->has('email') || session('error'))
             <script>
                 window.addEventListener("load", (event) => {
                     trigger();
@@ -29,6 +29,15 @@
             $firstWord = $word[0];
 
             $string = session('success');
+            $sWord = explode(' ', $string);
+            array_shift($sWord);
+            $mod = implode(' ', $sWord);
+        } else if(session('error')) {
+            $msg = session('error');
+            $word = explode(' ', $msg);
+            $firstWord = $word[0];
+
+            $string = session('error');
             $sWord = explode(' ', $string);
             array_shift($sWord);
             $mod = implode(' ', $sWord);

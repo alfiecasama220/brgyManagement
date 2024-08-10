@@ -22,6 +22,7 @@ class GlobalMessageMiddleware
         // }       
         
         Session::flash('addSuccess', 'Success! Your action was successful.');
+        Session::flash('updateSuccess', 'Success! Your data was updated.');
         Session::flash('verify', 'Success! You accepted this user.');
         Session::flash('verifyReject', 'Success! You rejected this user.');
         Session::flash('loginSuccess', 'Success! Your are logged in.');
@@ -29,6 +30,7 @@ class GlobalMessageMiddleware
         Session::flash('deleteSuccess', 'Success! The data was deleted.');
         Session::flash('addError', 'Failed! Your action was unsuccessful.');
         Session::flash('emailError', 'Failed! This email was taken from another user.');
+        Session::flash('passwordNotMatch', 'Failed! Password do not match.');
         return $next($request);
     }
 }

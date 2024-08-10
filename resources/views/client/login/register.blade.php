@@ -7,6 +7,11 @@
 <div class="container" style="height: auto;">
     <div class="register-form">
         <h2 class="text-center">Register</h2>
+        @if (session('success'))
+                <h5 class="text-success">{{ session('success') }}</h5>
+        @elseif (session('error') || $errors->has('email'))
+            <h5 class="text-danger">{{ session('error') ?: $errors->first('email') }}</h5>
+        @endif
         <form action="{{ route('registerClientPost') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group position-relative">
