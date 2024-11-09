@@ -15,7 +15,7 @@ class NonVoterController extends Controller
      */
     public function index()
     {
-        $tables = Population::all()->whereIn('voterSelect', '0');
+        $tables = Population::whereIn('voterSelect', ['0'])->paginate(6);
         return view('admin.pages.non-voters', compact('tables'));
     }
 

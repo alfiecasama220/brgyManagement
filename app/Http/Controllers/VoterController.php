@@ -15,7 +15,7 @@ class VoterController extends Controller
      */
     public function index()
     {
-        $tables = Population::all()->whereIn('voterSelect', '1');
+        $tables = Population::whereIn('voterSelect', ['1'])->paginate(6);
         return view('admin.pages.voters', compact('tables'));
     }
 

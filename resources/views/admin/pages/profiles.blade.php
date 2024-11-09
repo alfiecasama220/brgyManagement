@@ -48,18 +48,18 @@
                             <label for="password">New Password</label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="password"  name="password" placeholder="New Password">
-                                <div class="input-group-append">
+                                {{-- <div class="input-group-append">
                                     <span class="input-group-text show-password"><i class="fa fa-eye"></i></span>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="confirmPassword">Confirm New Password</label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="confirmPassword" name="password_confirmation" placeholder="Confirm New Password">
-                                <div class="input-group-append">
+                                {{-- <div class="input-group-append">
                                     <span class="input-group-text show-password"><i class="fa fa-eye"></i></span>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>  
                         <button type="submit" class="btn btn-primary btn-block w-25 float-right">Save Changes</button>

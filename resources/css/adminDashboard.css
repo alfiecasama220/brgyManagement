@@ -2,7 +2,6 @@
 
 body {
     font-family: Arial, sans-serif;
-    
 }
 .sidebar {
     position: fixed;
@@ -17,6 +16,7 @@ body {
 .main-content {
     margin-left: 250px; /* Same width as sidebar */
     padding: 20px;
+    height: 100vh;
 }
 .card {
     border: none;
@@ -218,8 +218,7 @@ body {
     padding: 30px;
     max-width: 900px;
     width: 100%;
-    height: auto
-    ;
+    height: auto;
 }
 
 .form-group {

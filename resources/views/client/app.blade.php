@@ -6,7 +6,7 @@
     <title>@yield('Title')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="shortcut icon" href="/assets/images/logo.png" type="image/x-icon">
-    @vite('resources/css/client.css')
+    @vite(['resources/css/client.css'])
 </head>
 <body>
     

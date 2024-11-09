@@ -1,5 +1,5 @@
 <header class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ route('home') }}">
         <img src="/assets/images/logo.png" alt="Barangay Bunao Logo" class="navbar-logo">
         Barangay Bunao
     </a>

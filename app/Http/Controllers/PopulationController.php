@@ -15,7 +15,7 @@ class PopulationController extends Controller
      */
     public function index()
     {
-        $tables = Population::all();
+        $tables = Population::paginate(6);
 
         return view('admin.pages.populations', compact(['tables']));
     }

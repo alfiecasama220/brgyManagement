@@ -144,8 +144,9 @@
             </div>
         </div>
     </div>
+    
 </div>
 
-
+<div class="d-flex w-100 justify-content-center mt-5">{{ $tables->links() }}</div>
 
 @endsection
